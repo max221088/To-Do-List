@@ -1,12 +1,21 @@
+.edit{
+  box-shadow: 0px 0px 8px 7px rgba(4, 4, 4, 0.2);
+  transform: translate3d(10px, 10px, 10px);
+  transform: scale(1.05);
+  transition: all 0.5s 0s;
+
+}
+
 .wrop-task{
   display: flex;
   align-items: center;
   padding: 10px;
   width: 350px;
-  background-color: #7efff5;
+  background-color: rgb(225, 239, 252);
   border: 1px solid #ff9f1a;
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin: 10px;
+  perspective: 400px;
 
   .checked{
     flex: 0 0 auto;
@@ -27,10 +36,14 @@
       height: 20px;
     }
   }
+  .done{
+    border: 1px solid #95d903;
+  }
   .task-content{
     flex: 1 1 auto;
     font-weight: 400;
     font-size: 16px;
+    cursor: pointer;
 
     .data-task{
       font-size: 12px;
@@ -50,6 +63,7 @@
       height: 15px;
       opacity: 0.6;
       margin-bottom: 5px;
+      cursor: pointer;
 
       &:hover{
         opacity: 1;

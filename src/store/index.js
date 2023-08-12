@@ -21,15 +21,15 @@ export default createStore({
   getters: {
     getTasks (state) {
       return state.tasks;
-    }
+    },
   },
   mutations: {
     checkedTask (state, index) {
       this.state.tasks[index].isDone = !this.state.tasks[index].isDone;
       window.localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
     },
-    updateTask (state, updatedTasks) {
-      this.state.tasks = updatedTasks;
+    updateTaskToLS () {
+      window.localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
     },
     deleteTask (state, index) {
       this.state.tasks.splice(index, 1)
