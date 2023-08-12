@@ -1,0 +1,60 @@
+.menu-wrop{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100vw;
+  height: 50px;
+  background-color: #4b6584;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .btn-add{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #a5b1c2;
+    background-color: #d1d8e0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 30px;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-delay: 0s;
+
+    &:hover{
+      top: 1px;
+      box-shadow: 0 3px 0px #3c354a;
+      background-color: #75eee2;
+    }
+    .add-icon{
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+  }
+  .search-input{
+    padding: 7px;
+    border-radius: 5px;
+    width: 250px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    background-color: #dde5ee;
+    margin-right: 30px;
+  }
+  .sort-panel{
+    margin-right: 30px;
+
+    .sort-select{
+      padding: 7px;
+      font-family: inherit;
+      width: 150px;
+      background-color: #dde5ee;
+      border-radius: 5px;
+    }
+  }
+}

@@ -24,6 +24,9 @@ export default createStore({
     },
   },
   mutations: {
+    updateTasks (state, newTasks) {
+      this.state.tasks = newTasks
+    },
     checkedTask (state, index) {
       this.state.tasks[index].isDone = !this.state.tasks[index].isDone;
       window.localStorage.setItem('tasks', JSON.stringify(this.state.tasks));

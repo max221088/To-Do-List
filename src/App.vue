@@ -1,17 +1,22 @@
 <template>
-  <div>
-    <ToDo v-for="(task, index) in tasks" :key="index" :task=task 
-    @checked=checkedTask(index) @deleteTask="deleteTask(index)"></ToDo>
+  <div class="wroper">
+    <MenuPanel/>
+    <div class="task-wrop">
+      <ToDo v-for="(task, index) in tasks" :key="index" :task=task 
+      @checked=checkedTask(index) @deleteTask="deleteTask(index)"></ToDo>
+    </div>
   </div>
 </template>
 
 <script>
 import ToDo from './components/ToDo.vue'
+import MenuPanel from './components/MenuPanel.vue'
 
 export default {
   name: 'App',
   components: {
-    ToDo
+    ToDo,
+    MenuPanel
   },
   data () {
     return {
