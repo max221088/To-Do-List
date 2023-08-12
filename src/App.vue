@@ -1,7 +1,7 @@
 <template>
   <div>
-
-    <ToDo v-for="(task, index) in tasks" :key="index" :task=task></ToDo>
+    <ToDo v-for="(task, index) in tasks" :key="index" :task=task 
+    @checked=checkedTask(index) @deleteTask="deleteTask(index)"></ToDo>
   </div>
 </template>
 
@@ -13,9 +13,27 @@ export default {
   components: {
     ToDo
   },
+  data () {
+    return {
+      
+    }
+  },
+  methods: {
+    checkedTask (index) {
+      this.$store.commit('checkedTask', index)
+    },
+    deleteTask (index) {
+      this.$store.commit('deleteTask', index)
+    }
+  },
   computed: {
     tasks () {
       return this.$store.getters['getTasks'];
+    }
+  },
+  created () {
+    if (localStorage.getItem("tasks")!= null) {
+      this.$store.dispatch('fetchTasksFromLS');
     }
   }
 }

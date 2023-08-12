@@ -1,8 +1,10 @@
 <template>
   <div class="wrop-task">
     <div class="checked">
-      <img class="check-img" v-if="task.isDone" src="../assets/img/checked.svg">
-      <img class="check-img" v-if="!task.isDone" src="../assets/img/Uncheck.svg">
+      <img class="check-img" v-if="task.isDone" src="../assets/img/checked.svg"
+      @click="checkedTask(task)">
+      <img class="check-img" v-if="!task.isDone" src="../assets/img/Uncheck.svg"
+      @click="checkedTask(task)">
     </div>
     <div class="task-content">
       {{ task.content }}
@@ -14,7 +16,7 @@
       </div>
     </div>
     <div class="button-block">
-      <img class="btn" src="../assets/img/del_icon.svg">
+      <img @click="deleteTask" class="btn" src="../assets/img/del_icon.svg">
       <img class="btn" src="../assets/img/edit_icon.svg">
     </div>
   </div>
@@ -26,7 +28,24 @@ export default {
   props: {
     task: Object
   },
-  
+  data () {
+    return {
+      
+    }
+  },
+  methods: {
+    checkedTask () {
+      this.$emit('checked')
+    },
+    deleteTask () {
+      this.$emit('deleteTask')
+    }
+  },
+  computed: {
+    tasks () {
+      return this.$store.getters['getTasks'];
+    }
+  },
 }
 </script>
 
