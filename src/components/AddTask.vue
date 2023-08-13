@@ -36,6 +36,7 @@ export default {
         doneDate: ''
       }
       this.$store.commit('addNewTask', newTask)
+      this.$emit('showAllertAdd')
       this.isOpen = false
       this.content = ''
     },

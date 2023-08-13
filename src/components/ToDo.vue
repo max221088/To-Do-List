@@ -50,6 +50,7 @@ export default {
     },
     saveChange () {
       this.$store.commit('updateTaskToLS')
+      this.$emit('showAllertEdited')
       this.isEdit = !this.isEdit
     },
     cancelEdit () {

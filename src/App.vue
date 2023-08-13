@@ -3,9 +3,13 @@
     <MenuPanel @openAddModal="openAddModal"/>
     <div class="task-wrop">
       <ToDo v-for="(task, index) in tasks" :key="index" :task=task 
-      @checked=checkedTask(index) @deleteTask="deleteTask(index)"></ToDo>
+      @checked=checkedTask(index) @deleteTask="deleteTask(index)"
+      @showAllertEdited="showAllertEdited()"></ToDo>
     </div>
-    <AddTask ref="addModal"></AddTask>
+    <AddTask ref="addModal" @showAllertAdd="openAllertAdd()"></AddTask>
+    <Allert ref="allertDel" :message="'Task Deleted'"></Allert>
+    <Allert ref="allertAdd" :message="'Task Added'"></Allert>
+    <Allert ref="allertEdited" :message="'Task Edited'"></Allert>
   </div>
 </template>
 
@@ -13,13 +17,15 @@
 import ToDo from './components/ToDo.vue'
 import MenuPanel from './components/MenuPanel.vue'
 import AddTask from './components/AddTask.vue'
+import Allert from './components/AllertMessage.vue'
 
 export default {
   name: 'App',
   components: {
     ToDo,
     MenuPanel,
-    AddTask
+    AddTask,
+    Allert
   },
   data () {
     return {
@@ -27,6 +33,12 @@ export default {
     }
   },
   methods: {
+    showAllertEdited () {
+      this.$refs.allertEdited.sendMessage()
+    },
+    openAllertAdd() {
+      this.$refs.allertAdd.sendMessage()
+    },
     openAddModal () {
       this.$refs.addModal.showModal()
     },
@@ -35,6 +47,7 @@ export default {
     },
     deleteTask (index) {
       this.$store.commit('deleteTask', index)
+      this.$refs.allertDel.sendMessage()
     }
   },
   computed: {
