@@ -18,18 +18,12 @@
         <option value="false">Not Done Only</option>
       </select>
     </div>
-    
   </div>
 </template>
 
 <script>
-
-
 export default {
   name: 'MenuPanel',
-  components: {
-    
-  },
   data () {
     return {
       taskForSearch: [],

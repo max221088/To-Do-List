@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="button-block">
-      <img @click="deleteTask" class="btn" src="../assets/img/del_icon.svg">
+      <img @click="deleteTask()" class="btn" src="../assets/img/del_icon.svg">
       <img v-if="!isEdit" @click="editTask" class="btn" src="../assets/img/edit_icon.svg">
       <img v-if="isEdit" @click="saveChange" class="btn" src="../assets/img/save_icon.svg" >
       <img v-if="isEdit" @click="cancelEdit" class="btn" src="../assets/img/cancel_icon.svg" >
@@ -34,7 +34,7 @@ import EditTask from './EditTask.vue'
 export default {
   name: 'ToDo',
   components: {
-    EditTask
+    EditTask,
   },
   props: {
     task: Object
@@ -61,14 +61,9 @@ export default {
       this.$emit('checked')
     },
     deleteTask () {
-      this.$emit('deleteTask')
+      this.$emit('openConfirmModal')
     }
-  },
-  computed: {
-    tasks () {
-      return this.$store.getters['getTasks'];
-    }
-  },
+  }
 }
 </script>
 
