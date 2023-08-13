@@ -10,10 +10,13 @@
       <p @dblclick="editTask" v-if="!isEdit">{{ task.content }}</p>
       <EditTask v-if="isEdit" :taskId="task"></EditTask>
       <div class="data-task">
-        created: {{ task.id }}
+        created: {{ new Date(Number(task.id)).toLocaleString() }}
       </div>
       <div class="data-task" v-if="task.doneDate">
-        finished: {{ task.doneDate }}
+        finished: {{ new Date(Number(task.doneDate)).toLocaleString()}}
+      </div>
+      <div class="data-task" v-if="!task.doneDate">
+        In Progress
       </div>
     </div>
     <div class="button-block">

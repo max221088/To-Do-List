@@ -2,20 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    tasks: [
-      {
-        id: '1111',
-        content: 'Some Task To do 1',
-        isDone: false,
-        doneDate: ''
-      },
-      {
-        id: '222',
-        content: 'Some Task To do 2',
-        isDone: false,
-        doneDate: ''
-      }
-    ]
+    tasks: []
     
   },
   getters: {
@@ -24,11 +11,20 @@ export default createStore({
     },
   },
   mutations: {
-    updateTasks (state, newTasks) {
-      this.state.tasks = newTasks
+    addNewTask (state, newTask) {
+      this.state.tasks.push(newTask)
+      window.localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
+    },
+    updateTasks (state, updateTasks) {
+      this.state.tasks = updateTasks
     },
     checkedTask (state, index) {
       this.state.tasks[index].isDone = !this.state.tasks[index].isDone;
+      if (this.state.tasks[index].isDone) {
+        this.state.tasks[index].doneDate = Date.now().toString()
+      } else {
+        this.state.tasks[index].doneDate = ''
+      }
       window.localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
     },
     updateTaskToLS () {

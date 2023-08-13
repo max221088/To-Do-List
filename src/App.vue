@@ -1,22 +1,25 @@
 <template>
   <div class="wroper">
-    <MenuPanel/>
+    <MenuPanel @openAddModal="openAddModal"/>
     <div class="task-wrop">
       <ToDo v-for="(task, index) in tasks" :key="index" :task=task 
       @checked=checkedTask(index) @deleteTask="deleteTask(index)"></ToDo>
     </div>
+    <AddTask ref="addModal"></AddTask>
   </div>
 </template>
 
 <script>
 import ToDo from './components/ToDo.vue'
 import MenuPanel from './components/MenuPanel.vue'
+import AddTask from './components/AddTask.vue'
 
 export default {
   name: 'App',
   components: {
     ToDo,
-    MenuPanel
+    MenuPanel,
+    AddTask
   },
   data () {
     return {
@@ -24,6 +27,9 @@ export default {
     }
   },
   methods: {
+    openAddModal () {
+      this.$refs.addModal.showModal()
+    },
     checkedTask (index) {
       this.$store.commit('checkedTask', index)
     },

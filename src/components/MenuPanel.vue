@@ -1,6 +1,6 @@
 <template>
   <div class="menu-wrop">
-    <div class="btn-add">
+    <div @click="openModal" class="btn-add">
       <img class="add-icon" src="../assets/img/add_icon.svg">
       <p class="add-name">Add New Task</p>
     </div>
@@ -18,13 +18,18 @@
         <option value="false">Not Done Only</option>
       </select>
     </div>
+    
   </div>
 </template>
 
 <script>
 
+
 export default {
   name: 'MenuPanel',
+  components: {
+    
+  },
   data () {
     return {
       taskForSearch: [],
@@ -34,6 +39,9 @@ export default {
     }
   },
   methods: {
+    openModal() {
+      this.$emit('openAddModal')
+    },
     searchTask() {
       let findTasks = []
       this.taskForSearch = JSON.parse(window.localStorage.getItem('tasks'))
